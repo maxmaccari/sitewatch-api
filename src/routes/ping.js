@@ -27,7 +27,7 @@ router.post('/ping', cors(), function(req,res){
     res.status(401).json({
       url,
       code: error.code,
-      description: error.message
+      message: error.message
     })
   })  
 })
