@@ -1,5 +1,5 @@
 const cors = require('cors')
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid')
 
 const PingService = require('../services/pingService')
 const validateUrl = require('../helpers/validateUrl')

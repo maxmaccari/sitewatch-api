@@ -11,7 +11,7 @@ app.use('/', pingRoute)
 
 // This is a route only to know if the application is running properly
 app.get('/',function(req,res){
-  res.send("Sitewatch API")
+  res.send('Sitewatch API')
 })
 
 module.exports = app
