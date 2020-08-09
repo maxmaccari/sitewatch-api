@@ -1,4 +1,5 @@
 const cors = require('cors')
+const { v4: uuidv4 } = require('uuid');
 
 const PingService = require('../services/pingService')
 const validateUrl = require('../helpers/validateUrl')
@@ -14,7 +15,7 @@ router.post('/ping', cors(), function(req,res){
 
   PingService.ping(url).then(({latency, status}) => {
     const result = {
-      id: 'ping-id',
+      id: uuidv4(),
       url,
       latency,
       status
