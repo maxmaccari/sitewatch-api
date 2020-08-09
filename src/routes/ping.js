@@ -1,9 +1,12 @@
+const cors = require('cors')
+
 const PingService = require('../services/pingService')
 const validateUrl = require('../helpers/validateUrl')
 
 const router = require('express').Router()
 
-router.post('/ping',function(req,res){
+router.options('/ping', cors())
+router.post('/ping', cors(), function(req,res){
   if (!req.body.url) return res.status(400).send('invalid request')
   if(!validateUrl(req.body.url)) return res.status(400).send('invalid url')
 
