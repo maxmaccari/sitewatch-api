@@ -4,11 +4,12 @@ const app = require("../../src/app")
 jest.mock('../../src/services/pingService')
 const PingService = require("../../src/services/pingService")
 
+// Even I'm not experienced with express, I like to write tests to have more confidence with the code
+// and ensure its quality.
 describe("POST /ping", () => {
   it("should response with the latency and http status if ping is sucessfull", done => {
     PingService.ping.mockResolvedValue({latency: 120, status: 200})
     const url = 'https://www.example.com'
-
 
     request(app)
       .post("/ping")
@@ -28,7 +29,6 @@ describe("POST /ping", () => {
   it("should response with the error if ping is not sucessfull", done => {
     PingService.ping.mockRejectedValue({code: 'ERR', message: 'msg'})
     const url = 'https://www.example.com'
-
 
     request(app)
       .post("/ping")
