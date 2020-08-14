@@ -8,7 +8,8 @@ const pingRoute = require('./routes/ping')
 
 const app = express()
 
-app.use(logger('dev'))
+
+if (process.env.NODE_ENV !== 'test') app.use(logger('dev'))
 app.use(express.json())
 
 app.use(cors())
@@ -24,12 +25,11 @@ app.use(function(req, res, next) {
   next(createError(404))
 })
 
-app.use(function(err, req, res) {
-  // set locals, only providing error in development
+// eslint-disable-next-line no-unused-vars
+app.use(function(err, req, res, next) {
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  // render the error page
   res.status(err.status || 500)
 
   const error = {
