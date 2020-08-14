@@ -7,7 +7,7 @@ This application performs ping requests for [Sitewatch](https://github.com/maxma
 ## Project setup
 
 ```
-npm install install
+npm install
 ```
 
 ### Serve application and hot-reloads for development
