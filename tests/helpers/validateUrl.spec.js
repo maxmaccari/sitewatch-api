@@ -1,4 +1,4 @@
-const validateUrl = require('../../src/helpers/validateUrl')
+const validateUrl = require('../../helpers/validateUrl')
 
 describe('validateUrl', () => {
   it('returns true if the url is valid', () => {
