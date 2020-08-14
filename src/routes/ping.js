@@ -1,4 +1,3 @@
-const cors = require('cors')
 const { v4: uuidv4 } = require('uuid')
 
 const PingService = require('../services/PingService')
@@ -7,8 +6,7 @@ const validateUrl = require('../helpers/validateUrl')
 const router = require('express').Router()
 
 // POST /ping
-router.options('/ping', cors())
-router.post('/ping', cors(), async function(req,res){
+router.post('/', async function(req,res){
   if (!req.body.url) return res.status(400).send('invalid request')
   if(!validateUrl(req.body.url)) return res.status(400).send('invalid url')
 
