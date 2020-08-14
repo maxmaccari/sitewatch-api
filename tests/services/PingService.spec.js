@@ -1,4 +1,4 @@
-const PingService = require('../../src/services/PingService')
+const PingService = require('../../services/PingService')
 
 jest.mock('axios')
 const axios = require('axios')

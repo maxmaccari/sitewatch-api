@@ -1,4 +1,4 @@
-const app = require('../src/app')
+const app = require('../app')
 const debug = require('debug')('intinebus-api:server')
 const http = require('http')
 

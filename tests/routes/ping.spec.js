@@ -1,8 +1,8 @@
 const request = require('supertest')
-const app = require('../../src/app')
+const app = require('../../app')
 
-jest.mock('../../src/services/PingService')
-const PingService = require('../../src/services/PingService')
+jest.mock('../../services/PingService')
+const PingService = require('../../services/PingService')
 
 describe('POST /ping', () => {
   it('should response with the latency and http status if ping is sucessfull', done => {
