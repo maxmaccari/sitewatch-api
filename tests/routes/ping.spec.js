@@ -4,8 +4,6 @@ const app = require('../../src/app')
 jest.mock('../../src/services/PingService')
 const PingService = require('../../src/services/PingService')
 
-// Even I'm not experienced with express, I like to write tests to have more confidence with the code
-// and ensure its quality.
 describe('POST /ping', () => {
   it('should response with the latency and http status if ping is sucessfull', done => {
     PingService.ping.mockResolvedValue({latency: 120, status: 200})
@@ -17,11 +15,11 @@ describe('POST /ping', () => {
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)
-      .then(response => {
-        expect(response.statusCode).toBe(200)
-        expect(response.body.url).toBe('https://www.example.com')
-        expect(response.body.latency).toBe(120)
-        expect(response.body.status).toBe(200)
+      .then(({ body }) => {
+        expect(body.url).toBe('https://www.example.com')
+        expect(body.latency).toBe(120)
+        expect(body.status).toBe(200)
+
         done()
       })
   })
@@ -36,10 +34,10 @@ describe('POST /ping', () => {
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(401)
-      .then(response => {
-        expect(response.statusCode).toBe(401)
-        expect(response.body.code).toBe('ERR')
-        expect(response.body.message).toBe('msg')
+      .then(({ body }) => {
+        expect(body.code).toBe('ERR')
+        expect(body.message).toBe('msg')
+
         done()
       })
   })
@@ -49,11 +47,7 @@ describe('POST /ping', () => {
       .post('/ping')
       .send({ })
       .set('Accept', 'application/json')
-      .expect(400)
-      .then(response => {
-        expect(response.statusCode).toBe(400)
-        done()
-      })
+      .expect(400, done)
   })
 
   it('should return 400 if url is invalid', done => {
@@ -61,10 +55,6 @@ describe('POST /ping', () => {
       .post('/ping')
       .send({ url: 'http/1kasfdf' })
       .set('Accept', 'application/json')
-      .expect(400)
-      .then(response => {
-        expect(response.statusCode).toBe(400)
-        done()
-      })
+      .expect(400, done)
   })
 })

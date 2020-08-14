@@ -8,13 +8,15 @@ const router = require('express').Router()
 
 // POST /ping
 router.options('/ping', cors())
-router.post('/ping', cors(), function(req,res){
+router.post('/ping', cors(), async function(req,res){
   if (!req.body.url) return res.status(400).send('invalid request')
   if(!validateUrl(req.body.url)) return res.status(400).send('invalid url')
 
   const url = req.body.url
 
-  PingService.ping(url).then(({latency, status}) => {
+  try {
+    const {latency, status} = await PingService.ping(url)
+
     const result = {
       id: uuidv4(),
       url,
@@ -23,13 +25,13 @@ router.post('/ping', cors(), function(req,res){
     }
 
     res.status(200).json(result)
-  }).catch(error => {
+  } catch (error) {
     res.status(401).json({
       url,
       code: error.code,
       message: error.message
     })
-  })  
+  }
 })
 
 module.exports = router
