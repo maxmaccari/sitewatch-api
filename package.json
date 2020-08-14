@@ -4,8 +4,8 @@
   "description": "Sitewatch API to ping servers",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "start": "node bin/www",
+    "dev": "nodemon bin/www",
     "test": "jest",
     "lint": "eslint"
   },
@@ -13,9 +13,11 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.2",
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
     "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "morgan": "^1.10.0",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
