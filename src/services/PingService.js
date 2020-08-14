@@ -7,8 +7,8 @@ module.exports = {
     const startTime = new Date().getTime()
 
     try {
-      const endTime = new Date().getTime()
       const { status } = await axios.get(url)
+      const endTime = new Date().getTime()
       const latency = endTime - startTime
       
       return {latency, status}
