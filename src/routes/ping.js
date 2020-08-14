@@ -1,7 +1,7 @@
 const cors = require('cors')
 const { v4: uuidv4 } = require('uuid')
 
-const PingService = require('../services/pingService')
+const PingService = require('../services/PingService')
 const validateUrl = require('../helpers/validateUrl')
 
 const router = require('express').Router()
@@ -24,7 +24,6 @@ router.post('/ping', cors(), function(req,res){
 
     res.status(200).json(result)
   }).catch(error => {
-
     res.status(401).json({
       url,
       code: error.code,

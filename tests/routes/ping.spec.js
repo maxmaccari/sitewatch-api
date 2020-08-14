@@ -1,8 +1,8 @@
 const request = require('supertest')
 const app = require('../../src/app')
 
-jest.mock('../../src/services/pingService')
-const PingService = require('../../src/services/pingService')
+jest.mock('../../src/services/PingService')
+const PingService = require('../../src/services/PingService')
 
 // Even I'm not experienced with express, I like to write tests to have more confidence with the code
 // and ensure its quality.
