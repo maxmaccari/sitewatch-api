@@ -1,12 +1,27 @@
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
       
 
 jobs:
   tests:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x]
+
     steps:
       - uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Cache node_modules
         id: cache-node-modules
@@ -16,10 +31,10 @@ jobs:
           key: ${{ runner.os }}-node-modules
 
       - name: Install packages
-        run: npm install
+        run: yarn install
 
       - name: Lint files
-        run: npm run lint
+        run: yarn run lint
 
       - name: Unit tests
-        run: npm run test
+        run: yarn run test

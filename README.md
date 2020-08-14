@@ -7,23 +7,29 @@ This application performs ping requests for [Sitewatch](https://github.com/maxma
 ## Project setup
 
 ```
-npm install install
+yarn install
 ```
 
 ### Serve application and hot-reloads for development
 
 ```
-npm run dev
+yarn dev
 ```
 
 ### Serve application for production
 
 ```
-npm start
+yarn start
+```
+
+### Run linter
+
+```
+yarn lint
 ```
 
 ### Run unit tests
 
 ```
-npm run test
+yarn test
 ```
