@@ -4,6 +4,8 @@
 
 This application performs ping requests for [Sitewatch](https://github.com/maxmaccari/sitewatch) application.
 
+You can check the frontend of this project running on [https://sitewatch.maxmaccari.vercel.app/](https://sitewatch.maxmaccari.vercel.app/).
+
 ## Project setup
 
 ```
